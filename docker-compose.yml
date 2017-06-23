@@ -1,0 +1,15 @@
+version: '2'
+services:
+  flask:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ".:/simple_flask/"
+    links:
+      - redis
+    command: ["python", "app.py"]
+  redis:
+    build: ./redis/
+    ports:
+      - "6379:6379"
